@@ -1,0 +1,139 @@
+// COLOR VARIABLES
+$white: white;
+$black: #272727;
+$darkBlack: #111;
+
+// $error: #FF0030;
+$error: #e6332a;
+$warning: #e16036;
+$success: #93ca3b;
+
+$blue: #024da1;
+$darkBlue: #023063;
+$purple: #554c86;
+$purpleAlt: #663399;
+
+$PRIMARY: $black;
+$SECONDARY: #86e23f;
+$gradient: linear-gradient(to top, $blue, $purple);
+
+// COLOR VARIATIONS
+$overlay: transparentize($black, 0.7);
+$modalbg: $overlay;
+
+// PLACEHOLDER
+%flex {
+	display: flex;
+	display: -ms-flexbox;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+%ellipsis {
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	max-width: 100%;
+	overflow: hidden;
+}
+
+@mixin transition($sec: 0.3s) {
+	-webkit-transition: all $sec;
+	-moz-transition: all $sec;
+	transition: all $sec;
+}
+
+@mixin transitionIn($all: all, $sec: 0.3s) {
+	-webkit-transition: $all $sec;
+	-moz-transition: $all $sec;
+	transition: $all $sec;
+}
+
+// MIXIN
+@mixin font-type($type) {
+	@if $type == 1 {
+		font-family: 'A';
+		font-weight: 300;
+		font-style: normal;
+	} @else if $type == 2 {
+		font-family: 'Med';
+		font-weight: 500;
+		font-style: normal;
+	} @else if $type == 3 {
+		font-family: 'Book';
+		font-weight: normal;
+		font-style: normal;
+	} @else if $type == 4 {
+		font-family: 'A';
+		font-weight: bold;
+		font-style: normal;
+	} @else if $type == 5 {
+		font-family: 'A';
+		font-weight: 900;
+		font-style: normal;
+	}
+}
+
+// MODAL
+@mixin modal($modalbg: $modalbg) {
+	overflow: auto;
+	background: $modalbg;
+	position: fixed;
+	top: -200px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	z-index: -2;
+	pointer-events: none;
+
+	@include transition;
+
+	&.active {
+		opacity: 1;
+		top: 0;
+		z-index: 999;
+		pointer-events: unset;
+	}
+}
+
+@mixin absoluteCenter {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+@mixin boxshadow($alpha: 0.15) {
+	-webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, $alpha);
+	-moz-box-shadow: 0 2px 3px 0 0 rgba(0, 0, 0, $alpha);
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, $alpha);
+}
+
+@mixin boxshadow_hover($alpha: 0.3) {
+	-webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, $alpha);
+	-moz-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, $alpha);
+	box-shadow: 0 5px 15px 0 rgba(0, 0, 0, $alpha);
+}
+
+@mixin boxshadow_default($alpha: 0.16) {
+	-webkit-box-shadow: 0 10px 35px 0 rgba(0, 0, 0, $alpha);
+	-moz-box-shadow: 0 10px 35px 0 rgba(0, 0, 0, $alpha);
+	box-shadow: 0 10px 35px 0 rgba(0, 0, 0, $alpha);
+}
+
+@mixin animation($name, $duration) {
+	-webkit-animation: $name $duration;
+	animation: $name $duration;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate3d(0, 0, 0, 0deg);
+	}
+
+	100% {
+		transform: rotate3d(0, 0, 1, -360deg);
+	}
+}

@@ -1,0 +1,5 @@
+export const LOADING: string = 'LOADING'
+export const LOCATION: string = 'LOCATION'
+export const SAVE_USER: string = 'SAVE_USER'
+export const SAVE_ACCESS: string = 'SAVE_ACCESS'
+export const SAVE_REFRESH: string = 'SAVE_REFRESH'
